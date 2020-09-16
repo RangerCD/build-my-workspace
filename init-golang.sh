@@ -3,6 +3,11 @@
 source default.conf
 source workspace.conf
 
+# Install bison which is required by gvm
+if ! yum list installed bison; then
+    $SUDO yum -y install bison
+fi
+
 # Install gvm
 $TARGET_SHELL < <(curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer)
 source ~/.gvm/scripts/gvm
